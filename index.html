@@ -150,7 +150,7 @@
                   Minimum of <span id="mealsUtilized"></span> due to meals already served or damaged
                 </small>
                 <div style="margin-top: 0.5em;">
-                  <button class="btn-lg btn-outline-danger" type="submit" id="startCounting-btn">Start Counting</button>
+                  <button class="btn btn-outline-danger" type="submit" id="startCounting-btn">Start Counting</button>
                 </div>
             </form>
           </div>
@@ -168,19 +168,18 @@
                     <button type="button" class="btn btn-outline-danger" name="resetApp" onclick="resetApp()"><i class="fas fa-redo"></i></button>
                   </div>
                 </div>
-              </div>
+      </div>
 
+    </div>
     </div>
     <!-- END card2-mealsAvailable -->
 
     <!-- START card3-mainCounters -->
     <div id="card3-mainCounters" class="secondary-cards ">
-      <div class="row">
-        <div class="offset-md-3">
-          <div class="card mb-3">
-            <span class="card-header">
-              <h5>Meal Counter</h5>
-              <a class="text-right float-right" id="goBackTo2" href="#" onclick="goBackTo2(); return false;">Go Back</a>
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5>Meal Counter</h5>
+          <a class="text-right float-right" id="goBackTo2" href="#" onclick="goBackTo2(); return false;">Go Back</a>
               <ul class="nav nav-tabs card-header-tabs" id="card3-tablist" role="tablist">
                 <li class="nav-item">
                   <a class="nav-link active" id="card3-home-tab" data-toggle="tab" href="#card3-hometab-content"
@@ -191,118 +190,21 @@
                     role="tab">Help</a>
                 </li>
               </ul>
-            </span>
+        </div>
 
-            <div class="tab-content" id="card3-tabcontent">
-              <div class="tab-pane fade show active" id="card3-hometab-content" role="tabpanel">
-                <div class="card-body text-center">
-                  <div class="offset-md-1 mb-3">
-                    <h6 class="card-title">Point Of Service Counter</h6>
-                    <div class="form-row">
-                      <div class="col text-left pl-2">
-                        <div class="siteName">$siteName</div>
-                      </div>
-                      <div class="col text-right pr-2">
-                        <div class="mealsAvailable"></div>
-                      </div>
-                    </div>
-                    <div class="form-row">
-                      <div class="col text-left pl-2">
-                        <div class="longDate">$longDate</div>
-                      </div>
-                      <div class="col text-right pr-2 break_small">
-                        <div class="mealType">$mealType</div>
-                      </div>
-                    </div>
-                  </div>
-                  <hr class="my-4">
+        <div class="tab-content" id="card3-tabcontent">
+          <div class="tab-pane fade show active" id="card3-hometab-content" role="tabpanel">
+            <div class="card-body text-center">
+              <h6 class="card-title">Point Of Service Counter</h6>
+              <h5 class="siteName">$siteName</h5>
+              <h5 class="mealsAvailable"></h5>
+              <h5 class="longDate">$longDate</h5>
+              <h5 class="mealType">$mealType</h5>
+              <hr class="my-4">
 
-                  <div class="col-md-12 text-center">
-
-                    <div class="jumbotron p-2 mb-3 text-center">
-                      <h1 class="display-5"><span class="mealsLeftover">00</span><span class='mealsLeftover-span'>Meals
-                          Remaining</span></h1>
-                      <input type="text" class="w-100 rounded border-0 bg-light text-center px-0 py-1 small mb-3"
-                        id="notify" readonly />
-                      <div class="input-group justify-content-center">
-                        <div class="input-group-prepend">
-                          <button type="button" class="btn-danger btn-lg" id="first-minus-btn"> - </button>
-                        </div>
-                        <h1 class="display-5 mealsFirst" style="margin: 0 10px 0 10px; width: 75px">00</h1>
-                        <div class="input-group-append">
-                          <button type="button" class="btn-success btn-lg" id="first-plus-btn"> + </button>
-                        </div>
-                      </div>
-                      <p class="tighten">First Meals to Children</p>
-                    </div>
-                    <!--jumbotron-->
-                    <div class="secondary-counters">
-                      <div class="input-group justify-content-center">
-                        <div class="input-group-prepend">
-                          <button type="button" class="btn-danger btn-sm" id="second-minus-btn"> - </button>
-                        </div>
-                        <div class="display-5 mealsSecond small_counter">00</div>
-                        <div class="input-group-append">
-                          <button type="button" class="btn-success btn-sm" id="second-plus-btn"> + </button>
-                        </div>
-                      </div>
-                      <p>Second Meals to Children</p>
-                      <hr class="" style="height:1px;border:none;color:#839192;background-color:#839192;">
-                    </div>
-                    <div class="secondary-counters">
-                      <div class="input-group justify-content-center">
-                        <div class="input-group-prepend">
-                          <button type="button" class="btn-danger btn-sm" id="mealsProgAdult-minus-btn"> - </button>
-                        </div>
-                        <div class="display-5 mealsProgAdult small_counter">00</div>
-                        <div class="input-group-append">
-                          <button type="button" class="btn-success btn-sm" id="mealsProgAdult-plus-btn"> + </button>
-                        </div>
-                      </div>
-                      <p>Program Adult Meals</p>
-                      <hr class="" style="height:1px;border:none;color:#839192;background-color:#839192;">
-                    </div>
-                    <div class="secondary-counters">
-                      <div class="input-group justify-content-center">
-                        <div class="input-group-prepend">
-                          <button type="button" class="btn-danger btn-sm" id="mealsNonProgAdult-minus-btn"> - </button>
-                        </div>
-                        <div class="display-5 mealsNonProgAdult small_counter">00</div>
-                        <div class="input-group-append">
-                          <button type="button" class="btn-success btn-sm" id="mealsNonProgAdult-plus-btn"> + </button>
-                        </div>
-                      </div>
-                      <p>Non-Program Adult Meals</p>
-                      <hr class="" style="height:1px;border:none;color:#839192;background-color:#839192;" />
-                      <!-- /.secondary-counters -->
-                      <button class="btn btn-info mb-3" id="doneCounting-btn">Done Counting</button>
-                    </div>
-                  </div>
-
-                  <div class="card-footer text-muted text-center">
-                    Step 3/6<br>
-                    Count meals at point of service.<br>
-                    Press "Done Counting" at end of service.
-                  </div>
-                </div>
-              </div>
-              <!--card3-hometab-content-->
-
-              <div class="tab-pane fade" id="card3-helptab-content" role="tabpanel">
-                <div class="card-body bg-light">
-                  <div class="col-md-8 offset-md-2">
-                    <h6 class="card-title text-center">Meal Counter Help</h6>
-                    <p>Count meals at point of service</p>
-                    <p>Press "Done Counting" at end of service.</p>
-                    <hr class="my-4">
-                    <p>Click below to clear all data and restart this app from the beginning.</p>
-                    <button type="button" class="btn btn-danger" name="resetApp" onclick="resetApp()">RESET</button>
-                  </div>
-                </div>
-              </div>
-              <!--card3-helptab-content-->
+              <div class="jumbotron p-2 mb-3 text-center">
+                <h1 class="display-5"><span class="mealsLeftover">00</span><span class='mealsLeftover-span'>Meals Remaining</span></h1>
             </div>
-            <!--card3-tabcontent-->
           </div>
         </div>
       </div>

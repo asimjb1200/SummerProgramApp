@@ -142,9 +142,9 @@ function sumMealsAvail() {
   mealsAvailable = mealsTotal;
   $('.mealsAvailable').val(mealsAvailable);
   if (mealsAvailable > 0 && (mealsNew != "" && mealsPrevious != "")) {
-    document.getElementById("startCounting-btn").setAttribute("class", "btn-lg w-100 btn-success");
+    document.getElementById("startCounting-btn").setAttribute("class", "btn-lg btn-outline-success");
   } else {
-    document.getElementById("startCounting-btn").setAttribute("class", "btn-lg w-100 btn-danger");
+    document.getElementById("startCounting-btn").setAttribute("class", "btn-lg btn-outline-danger");
   }
 };
 
