@@ -71,7 +71,7 @@ function sumMeals() {
 }
 
 
-<!---// card1-siteMealInfo functionality --->
+// card1-siteMealInfo functionality --->
 
 // validation for mealType onclick
 // https://getbootstrap.com/docs/4.2/components/forms/#validation
@@ -80,6 +80,7 @@ $("#meal-type-btns").click(function(event) {
   // Fetch form to apply custom Bootstrap validation
   var form = $("#site-meal-form");
   var meal = document.activeElement.getAttribute('value');
+
   if (meal===null) {
      /* On Android when you tap through the input boxes on the first screen and then select Go on the last one,
     it will take you into the second screen without selecting a meal. This is not a problem with Apple. */
@@ -87,10 +88,10 @@ $("#meal-type-btns").click(function(event) {
     event.stopPropagation();
     document.activeElement.blur(); //close soft keyboard
     return;
-  } else if (form[0].checkValidity() === false) { // check form fields using built-in validation in html
+  } else if (!form[0].checkValidity()) { // check form fields using built-in validation in html
     event.preventDefault();
     event.stopPropagation();
-  } else if (form[0].checkValidity() == true) { // must have siteName, siteAddress, siteSupervisor
+  } else if (form[0].checkValidity()) { // must have siteName, siteAddress, siteSupervisor
     event.preventDefault();
     //var meal = document.activeElement.getAttribute('value');
     selectSiteMeal(meal);
@@ -103,6 +104,7 @@ $("#meal-type-btns").click(function(event) {
 
 // upon successful mealType validation
 function selectSiteMeal(meal) {
+  // populate local storage with the input values
   siteName = document.getElementById("siteName-input").value;
   siteAddress = document.getElementById("siteAddress-input").value;
   siteSupervisor = document.getElementById("siteSupervisor-input").value;
@@ -123,11 +125,13 @@ function selectSiteMeal(meal) {
       mealType = "Supper";
       break;
   }
+
+  // insert the meal type text into the DOM
   $(".mealType").text(mealType);
 };
 
 
-<!---// card2-mealsAvailable functionality --->
+// card2-mealsAvailable functionality --->
 
 function sumMealsAvail() {
   mealsNew = document.getElementById("mealsNew").value;
@@ -167,7 +171,6 @@ $("#startCounting-btn").click(function(event) {
     event.preventDefault();
     sumMeals();
     deliveryTemp = document.getElementsByClassName("deliveryTemp")[0].value;
-    console.log(deliveryTemp);
     $("#notify").toggleClass('text-primary');
     $("#notify").val(readyServe);
     setTimeout(function() {
@@ -180,7 +183,7 @@ $("#startCounting-btn").click(function(event) {
 });
 
 
-<!---// card3-counterCard functionality --->
+// card3-counterCard functionality --->
 
 $('#first-plus-btn').click(function(e) {
   if (mealsLeftover == 0) {
@@ -279,7 +282,7 @@ $('#doneCounting-btn').click(function(e) {
   $("#card4-addlMeals").fadeIn();
 });
 
-<!---// card4-addlMeals functionality -->
+// card4-addlMeals functionality -->
 
 function inputDamaged() {
   mealsDamaged = document.getElementById("mealsDamaged").value;
@@ -318,7 +321,7 @@ $('deliveryTemp').attr('placeholder', deliveryTemp);
 
 
 
-<!-- // card5-signature functionality  --->
+// card5-signature functionality  --->
 $('#sitePhone').inputmask({
         mask: sitePhone,
         greedy: false,

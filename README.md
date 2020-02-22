@@ -62,11 +62,6 @@ Add additional notes about how to deploy this on a live system
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
-## Authors
-
-* **Martin Vicknair** - *Developer* - [GitHub](https://github.com/martinvicknair)
-
-See also the list of [contributors](https://github.com/martinvicknair/meal-counter/contributors) who participated in this project.
 
 ## License
 
@@ -74,6 +69,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Thank you to everyone who's ideas contributed to this
