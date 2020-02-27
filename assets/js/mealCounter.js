@@ -110,6 +110,34 @@ $("#meal-type-btns").click(function(event) {
   form.addClass('was-validated');
 });
 
+function getMeal(val) {
+  // console.log(val);
+
+    // Fetch form to apply custom Bootstrap validation
+    var form = $("#site-meal-form");
+    var meal = val;
+  
+    if (meal===null) {
+       /* On Android when you tap through the input boxes on the first screen and then select Go on the last one,
+      it will take you into the second screen without selecting a meal. This is not a problem with Apple. */
+      event.preventDefault();
+      event.stopPropagation();
+      document.activeElement.blur(); //close soft keyboard
+      return;
+    } else if (!form[0].checkValidity()) { // check form fields using built-in validation in html
+      event.preventDefault();
+      event.stopPropagation();
+    } else if (form[0].checkValidity()) { // must have siteName, siteAddress, siteSupervisor
+      event.preventDefault();
+      //var meal = document.activeElement.getAttribute('value');
+      selectSiteMeal(meal);
+      $(".siteName").text(siteName);
+      $("#card1-siteMealInfo").fadeOut('fast');
+      $("#card2-mealsAvailable").fadeIn();
+    }
+    form.addClass('was-validated');
+}
+
 // upon successful mealType validation
 function selectSiteMeal(meal) {
   // populate local storage with the input values
