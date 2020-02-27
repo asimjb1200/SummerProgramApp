@@ -45,7 +45,7 @@
 }
 
 .card-header {
-  background-color: #8f2828!important;
+  background-color: #007bff!important;
   color: white;
 }
 
@@ -93,6 +93,13 @@ h4 {
 
 #card1-tabcontent .form-control{
   margin-bottom: 1em;
+}
+
+.nav-tabs .nav-link {
+  background-color: lightskyblue!important;
+  border-width: 1.5px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 /*#card4-hometab-content table td:first-child {
 	width:25%;
