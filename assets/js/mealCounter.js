@@ -130,7 +130,7 @@ function selectSiteMeal(meal) {
       mealType = "Snack";
       break;
     case "su":
-      mealType = "Supper";
+      mealType = "Dinner";
       break;
   }
 
