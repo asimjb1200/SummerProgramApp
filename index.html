@@ -18,9 +18,12 @@
   <title>Meal Counter</title>
 </head>
 
-<body onbeforeunload="return beforeUnload()">
+<body onbeforeunload="return beforeUnload()" onload="on()">
   <div class="container-fluid">
 
+    <div id="overlay" onclick="off()">
+      <div id="text">This app is intended for testing purposes only, please do not use in production. <button class="btn-lg btn-success" onclick="off()">Begin</button></div>
+    </div>
     <!-- START card1-siteMealInfo -->
     <div id="card1-siteMealInfo">
       <div class="card-header">
@@ -423,10 +426,10 @@
               the form.</p>
             <hr class="my-4">
             <p>Click below to clear all data and restart this app from the beginning.</p>
-            <button type="button" class="btn btn-outline-danger" name="resetApp" onclick="resetApp()"><i
-                class="fas fa-redo"></i></button>
+            <button type="button" class="btn btn-outline-danger" name="resetApp" onclick="resetApp()"><i class="fas fa-redo"></i></button>
           </div>
         </div>
+
       </div>
       <!-- END card5-signature -->
 
@@ -587,6 +590,8 @@
         </div>
       </div>
 
+    </div>
+    
     </div>
     <!--container-->
 

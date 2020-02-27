@@ -70,6 +70,14 @@ function sumMeals() {
   }
 }
 
+function on() {
+  document.getElementById("overlay").style.display = "block";
+}
+
+function off() {
+  document.getElementById("overlay").style.display = "none";
+}
+
 
 // card1-siteMealInfo functionality --->
 
@@ -334,7 +342,10 @@ function goToDone() {
     createPDF();
     deliveryTemp = document.getElementsByClassName("deliveryTemp")[0].value;
     $("#card5-signature").fadeOut('fast');
-    $("#card6-done").fadeIn();
+    // $("#card6-done").fadeIn();
+    localStorage.clear();
+    window.onbeforeunload = null;
+    window.location.reload();
   } else {
         $("#needSigModal").modal()
   }
@@ -405,25 +416,28 @@ function numNaN(str) {
 // };
 
 function resetApp() {
-  var modalConfirm = function(callback) {
-    $("#resetModal").modal()
-    $("#resetModal-yes").on("click", function() {
-      callback(true);
-      $("#resetModal").modal('hide');
-    });
-    $("#resetModal-no").on("click", function() {
-      callback(false);
-      $("#resetModal").modal('hide');
-    });
-  };
+  // var modalConfirm = function(callback) {
+  //   $("#resetModal").modal()
+  //   $("#resetModal-yes").on("click", function() {
+  //     callback(true);
+  //     $("#resetModal").modal('hide');
+  //   });
+  //   $("#resetModal-no").on("click", function() {
+  //     callback(false);
+  //     $("#resetModal").modal('hide');
+  //   });
+  // };
 
-  modalConfirm(function(confirm) {
-    if (confirm) {
-      localStorage.clear();
-      window.onbeforeunload = null;
-      window.location.reload();
-    }
-  });
+  // modalConfirm(function(confirm) {
+  //   if (confirm) {
+  //     localStorage.clear();
+  //     window.onbeforeunload = null;
+  //     window.location.reload();
+  //   }
+  // });
+  localStorage.clear();
+  window.onbeforeunload = null;
+  window.location.reload();
 };
 
 function restartApp() {
