@@ -85,6 +85,17 @@ h4 {
   padding: 15px;
 }
 
+.visible {
+  display: block;
+  opacity: 1;
+  transition: opacity 2s linear;
+}
+.hidden {
+  display: none;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
 #totalMealCount {
   margin-bottom: 0.5em;
 }

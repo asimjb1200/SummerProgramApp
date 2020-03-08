@@ -5,6 +5,16 @@ var siteSupervisor = "";
 var mealType = "";
 var deliveryTemp = "";
 var sitePhone = [{ "mask": " ### - ### - ####"}];
+let siteElements = document.getElementsByClassName('siteName');
+let mealTypeElements = document.getElementsByClassName("mealType");
+// must initialize jSignature before jquery hiding secondary cards 2-6
+$("#signature").jSignature();
+let secondaryCardElements = document.getElementsByClassName("secondary-cards");
+for (let index = 0; index < secondaryCardElements.length; index++) {
+  secondaryCardElements[index].style.display = 'none';
+}
+let card1_smi = document.getElementById('card1-siteMealInfo');
+let card2_ma = document.getElementById('card2-mealsAvailable')
 
 var mealsNew;
 var mealsPrevious;
@@ -31,13 +41,20 @@ var readyServe = "Ready to serve!";
 var now = moment();
 var longDate = moment(now).format("ddd, MMM DD, YYYY");
 var shortDate = moment(now).format("YYYY-DD-MM")
-$(".longDate").text(longDate);
-$(".shortDate").text(shortDate);
+let longDateElements = document.getElementsByClassName("longDate");
+let shortDateElements = document.getElementsByClassName("shortDate");
 
-// must initialize jSignature before jquery hiding secondary cards 2-6
-$("#signature").jSignature();
+for (let index = 0; index < longDateElements.length; index++) {
+  longDateElements[index].innerHTML = longDate;
+}
 
-$(".secondary-cards").fadeOut('fast');
+for (let index = 0; index < shortDateElements.length; index++) {
+  shortDateElements[index].innerHTML = shortDate;
+}
+
+
+
+//$(".secondary-cards").fadeOut('fast');
 //comment above line to see all cards at start
 //does not alter navigation by toggleClass display of cards
 
@@ -103,9 +120,13 @@ $("#meal-type-btns").click(function(event) {
     event.preventDefault();
     //var meal = document.activeElement.getAttribute('value');
     selectSiteMeal(meal);
-    $(".siteName").text(siteName);
-    $("#card1-siteMealInfo").fadeOut('fast');
-    $("#card2-mealsAvailable").fadeIn();
+    for (let index = 0; index < siteElements.length; index++) {
+      siteElements[index].innerHTML = siteName;
+    }
+    let card1_smi = document.getElementById('card1-siteMealInfo');
+    let card2_ma = document.getElementById('card2-mealsAvailable')
+    card1_smi.style.display = 'none';
+    card2_ma.style.display = 'block';
   }
   form.addClass('was-validated');
 });
@@ -131,9 +152,9 @@ function getMeal(val) {
       event.preventDefault();
       //var meal = document.activeElement.getAttribute('value');
       selectSiteMeal(meal);
-      $(".siteName").text(siteName);
-      $("#card1-siteMealInfo").fadeOut('fast');
-      $("#card2-mealsAvailable").fadeIn();
+
+      card1_smi.style.display = 'none';
+      card2_ma.style.display = 'block';
     }
     form.addClass('was-validated');
 }
@@ -163,7 +184,9 @@ function selectSiteMeal(meal) {
   }
 
   // insert the meal type text into the DOM
-  $(".mealType").text(mealType);
+  for (let index = 0; index < mealTypeElements.length; index++) {
+    mealTypeElements[index].innerHTML = mealType;
+  }
 };
 
 
