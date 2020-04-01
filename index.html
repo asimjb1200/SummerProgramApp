@@ -18,12 +18,11 @@
   <title>Meal Counter</title>
 </head>
 
-<body onbeforeunload="return beforeUnload()" onload="on()">
+<body onbeforeunload="return beforeUnload()">
   <div class="container-fluid">
 
     <div id="overlay" onclick="off()">
-      <div id="text">This app is intended for testing purposes only, please do not use in production. <button
-          class="btn-lg btn-success" onclick="off()">Begin</button></div>
+      <div id="text">This app is intended for testing purposes only, please do not use in production. <button class="btn-lg btn-success" onclick="off()">Begin</button></div>
     </div>
     <!-- START card1-siteMealInfo -->
     <div id="card1-siteMealInfo">
@@ -52,8 +51,8 @@
           <form class="needs-validation" id="site-meal-form" novalidate>
             <input type="text" class="form-control" id="siteName-input" placeholder="Site Name" required>
             <div class="invalid-feedback">Site Name required.</div>
-            <input type="text" class="form-control" id="siteAddress-input" placeholder="Site Address" required>
-            <div class="invalid-feedback">Site Address required.</div>
+            <input type="time" class="form-control" id="deliveryTime-input" required>
+            <div class="invalid-feedback">Delivery Time Required.</div>
             <input type="text" class="form-control" id="siteSupervisor-input" placeholder="Site Supervisor" required>
             <div class="invalid-feedback">Site Supervisor required.</div>
             <input type="text" class="form-control" id='sitePhone' placeholder="Telephone (optional)">
@@ -147,13 +146,10 @@
             <input type="number" id="meal_temperature" class="form-control deliveryTemp page2input" min="32" max="200"
               id="" placeholder="°F Delivery Temp (optional)" />
             <div class="invalid-feedback">Enter number of New Meals, even if zero.</div>
-            <input type="number" class="form-control page2input" min="0" id="mealsNew"
-              placeholder="Meals Received/Prepared" oninput="sumMealsAvail()" required />
+            <input type="number" class="form-control page2input" min="0" id="mealsNew" placeholder="Total Meals Delivered/Prepared" oninput="sumMealsAvail()" required />
             <div class="invalid-feedback">Enter number of Previous Meals, even if zero.</div>
-            <input type="number" class="form-control page2input" min="0" id="mealsPrevious"
-              placeholder="Meals From Previous Day" oninput="sumMealsAvail()" required />
-            <span>Total Meals<input type="number" id="mealsAvailable-input" class="form-control mealsAvailable"
-                value="0" min="1" required readonly /></span>
+            <input type="number" class="form-control page2input" min="0" id="mealsPrevious" placeholder="Meals From Previous Day" oninput="sumMealsAvail()" required />
+            <span>Total Meals<input type="number" id="mealsAvailable-input" class="form-control mealsAvailable" value="0" min="1" required readonly /></span>
 
             <small id="noMeals-invalidFeedback" class="form-text text-danger d-none mx-auto">
               Cannot start counting without Meals Available
