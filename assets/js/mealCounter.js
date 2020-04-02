@@ -750,6 +750,16 @@ function createPDF() {
   doc.text('P.M. Snack', 85, 62);
   doc.text('Supper', 105, 62);
 
+  if (mealType === 'Breakfast') {
+    doc.line(34, 59, 51, 64);
+  } else if (mealType === 'Lunch') {
+    doc.line(72, 59, 80, 64);
+  } else if (mealType === 'Dinner') {
+    doc.line(104, 59, 115, 64);
+  } else if (mealType === 'Snack') {
+    doc.line(53, 59, 67, 63);
+  }
+
   doc.text('Site Supervisor:', 141, 55.4);
   doc.text(siteSupervisor, 142, 63);
 
@@ -763,12 +773,13 @@ function createPDF() {
   doc.line(55.4, 65, 55.4, 77);
 
   doc.text('Total Meals Delivered/Prepared:', 56, 69);
-  doc.text(mealsAvailable, 57, 75);
+  doc.text(mealsAvailable.toString(), 57, 75);
 
   // vertical seperator
   doc.line(102, 65, 102, 77);
 
   doc.text('Delivery Temperature:', 103, 69);
+  doc.text(deliveryTemp, 104, 75);
 
   doc.text('Meal Service Time:', 141, 69);
 
@@ -814,7 +825,7 @@ function createPDF() {
   }
 
   doc.text('Total First Meals Served:', 141, 185);
-  doc.text(mealsFirst, 180, 185);
+  doc.text(mealsFirst.toString(), 180, 185);
 
   // second meals section
 
@@ -835,11 +846,12 @@ function createPDF() {
     }
     leftDistance = leftDistance + 7;
   }
-  doc.text('Total Second Meals Served to Children:', 123, topDistance + 7);
+  doc.text('Total Second Meals Served to Children: ' + mealsSecond.toString(), 123, topDistance + 7);
+  // doc.text(mealsSecond.toString(), 124, (topDistance + 11));
 
   // NON REIMBURSABLE MEALS
   doc.setFontSize(12);
-  doc.text('NON-REIMBURSABLE MEALS', 100, topDistance + 15, { align: 'center' });
+  doc.text('NON-REIMBURSABLE MEALS', 100, topDistance + 15, 'center');
 
   doc.setFontSize(10);
   doc.text('Meals Served to Program Adults:', 12, (topDistance + 18));
@@ -857,7 +869,8 @@ function createPDF() {
     leftDistance = leftDistance + 7;
   }
   topDistance = topDistance - 7;
-  doc.text('Total Meals Served to Program Adults:', 123, (topDistance + 14));
+  doc.text('Total Meals Served to Program Adults: ' + mealsProgAdult.toString(), 123, (topDistance + 14));
+  // doc.text(mealsProgAdult.toString(), 124, (topDistance + 20))
 
   doc.text('Meals Served to Non-Program Adults:', 12, (topDistance + 19));
   topDistance = topDistance + 25;
@@ -873,11 +886,12 @@ function createPDF() {
     leftDistance = leftDistance + 7;
   }
   topDistance = topDistance - 7;
-  doc.text('Total Meals Served to Non-Program Adults:', 123, (topDistance + 14));
+  doc.text('Total Meals Served to Non-Program Adults: ' + mealsNonProgAdult.toString(), 123, (topDistance + 14));
+  // doc.text(mealsNonProgAdult.toString(), 124, (topDistance + 14));
 
-  doc.text('Total Meals Served:', 12, 255);
-  doc.text('Total Leftover Meals:', 55, 255);
-  doc.text('Total Damaged Meals:', 100, 255);
+  doc.text(`Total Meals Served: ` + mealsServed.toString(), 12, 255);
+  doc.text('Total Leftover Meals: ' + mealsLeftover.toString(), 55, 255);
+  doc.text('Total Damaged Meals: ' + mealsDamaged.toString(), 100, 255);
   doc.text('Income From Adult Meals:', 147, 255);
 
   doc.rect(12, 258, 188.4, 19);
@@ -885,7 +899,8 @@ function createPDF() {
 
   // vertical seperator
   doc.line(140, 258, 140, 277);
-  doc.text('Date:', 142, 262);
+  doc.text('Date: ', 142, 262);
+  doc.text(shortDate, 143, 269);
 
   var canvas = document.body.querySelector('canvas');
 
@@ -900,19 +915,7 @@ function createPDF() {
   } else if (canvas !== null) {
     var sig = canvas.toDataURL("image/jpeg");
     // doc.addImage(st, 'JPEG', 12, (c + 8), 80, 25);
-    doc.addImage(sig, 'JPEG', 15, 264, 80, 25);
+    doc.addImage(sig, 'JPEG', 22, 264, 70, 14);
   }
   doc.save("MealCount_" + siteName + "_" + shortDate + ".pdf");
 }
-
-// console.log(`Meal Totals`);
-// console.log(`mealsNew: ${mealsNew}`);
-// console.log(`mealsPrevious: ${mealsPrevious}`);
-// console.log(`mealsAvailable: ${mealsAvailable}`);
-// console.log(`mealsServed: ${mealsServed}`);
-// console.log(`mealsDamaged: ${mealsDamaged}`);
-// console.log(`mealsLeftover: ${mealsLeftover}`);
-// console.log(`mealsUtilized: ${mealsUtilized}`);
-// console.log(`------------------------`);
-
-// console.log(`${siteName}-${shortDate}-${mealType}`);
