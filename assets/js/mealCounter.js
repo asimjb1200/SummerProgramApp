@@ -767,7 +767,7 @@ function createPDF() {
   doc.line(25, 65, 185, 65);
 
   doc.text('Delivery Time:', 26, 69);
-  doc.text(deliveryTemp, 27, 75);
+  doc.text(deliveryTime.toString(), 27, 75);
 
   // vertical seperator
   doc.line(55.4, 65, 55.4, 77);

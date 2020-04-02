@@ -49,12 +49,16 @@
         <div class="tab-pane fade show active" id="card1-hometab-content" role="tabpanel">
           <h4 class="card-title card1-title">Site & Meal Info</h4>
           <form class="needs-validation" id="site-meal-form" novalidate>
-            <input type="text" class="form-control" id="siteName-input" placeholder="Site Name" required>
             <div class="invalid-feedback">Site Name required.</div>
-            <input type="time" class="form-control" id="deliveryTime-input" required>
+            <input type="text" class="form-control" id="siteName-input" placeholder="Site Name" required>
+            
             <div class="invalid-feedback">Delivery Time Required.</div>
-            <input type="text" class="form-control" id="siteSupervisor-input" placeholder="Site Supervisor" required>
+            <h6 style="color: #839192;">Delivery Time</h6>
+            <input type="time" class="form-control" id="deliveryTime-input" required>
+            
             <div class="invalid-feedback">Site Supervisor required.</div>
+            <input type="text" class="form-control" id="siteSupervisor-input" placeholder="Site Supervisor" required>
+            
             <input type="text" class="form-control" id='sitePhone' placeholder="Telephone (optional)">
 
               <h4 class="card1-title">Choose the Meal Type:</h4>
