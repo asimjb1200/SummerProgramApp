@@ -517,7 +517,7 @@ function createPDF() {
 
   const url = getImage();
   // add the logo to the top of the form
-  doc.addImage(url, 'PNG', 25, 5, 160, 30);
+  doc.addImage(url, 'PNG', 25, 5, 160, 23);
 
   //picture box coords
   // doc.rect(25, 5, 160, 30);
@@ -696,11 +696,11 @@ function createPDF() {
   doc.text('Total Damaged Meals: ' + mealsDamaged.toString(), 100, 255);
   doc.text('Income From Adult Meals:', 147, 255);
 
-  doc.rect(12, 258, 188.4, 19);
+  doc.rect(12, 258, 188.4, 14);
   doc.text(`Site Supervisor's Signature:`, 14, 262);
 
   // vertical seperator
-  doc.line(140, 258, 140, 277);
+  doc.line(140, 258, 140, 272);
   doc.text('Date: ', 142, 262);
   doc.text(shortDate, 143, 269);
 
@@ -717,7 +717,7 @@ function createPDF() {
   } else if (canvas !== null) {
     var sig = canvas.toDataURL("image/jpeg");
     // doc.addImage(st, 'JPEG', 12, (c + 8), 80, 25);
-    doc.addImage(sig, 'JPEG', 22, 264, 70, 14);
+    doc.addImage(sig, 'JPEG', 22, 262, 70, 10);
   }
   doc.save("MealCount_" + siteName + "_" + shortDate + ".pdf");
 }
