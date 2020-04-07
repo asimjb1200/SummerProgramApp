@@ -524,7 +524,7 @@ function createPDF() {
 
   // form will be in here
   //       L,  T,  w ,   h
-  doc.rect(25, 32, 160, 37);
+  doc.rect(25, 32, 160, 34);
 
   doc.setFontSize(9);
   doc.setFont("times");
@@ -580,12 +580,12 @@ function createPDF() {
   doc.text(mealsAvailable.toString(), 57, 62);
 
   // vertical seperator
-  doc.line(102, 65, 102, 66);
+  doc.line(102, 53, 102, 66);
 
   doc.text('Delivery Temperature:', 103, 56);
   doc.text(deliveryTemp, 104, 62);
 
-  doc.text('Meal Service Time:', 141, 69);
+  doc.text('Meal Service Time:', 141, 56);
 
   doc.setFontSize(12);
 
@@ -633,8 +633,7 @@ function createPDF() {
     topDistance += 6;
   }
 
-  doc.text('Total First Meals Served:', 141, 185);
-  doc.text(mealsFirst.toString(), 180, 185);
+  doc.text('Total First Meals Served: ' + mealsFirst.toString(), 141, 178);
 
   // second meals section
 
