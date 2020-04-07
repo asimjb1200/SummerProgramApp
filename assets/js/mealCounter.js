@@ -649,10 +649,11 @@ function createPDF() {
     dayCount = j.toString();
     doc.text(leftDistance, topDistance, dayCount);
     doc.line(leftDistance + 4.3, topDistance - 4, leftDistance + 4.3, topDistance + 2);
-
+    doc.setLineWidth(1);
     if (j <= mealsSecond) {
       doc.line(leftDistance - 1, topDistance + 1, leftDistance + 3, topDistance - 2);
     }
+    doc.setLineWidth(0);
     leftDistance = leftDistance + 7;
   }
   doc.text('Total Second Meals Served to Children: ' + mealsSecond.toString(), 123, topDistance + 7);
@@ -672,9 +673,11 @@ function createPDF() {
     dayCount = k.toString();
     doc.text(leftDistance, topDistance, dayCount);
     doc.line(leftDistance + 4.5, topDistance - 4, leftDistance + 4.5, topDistance + 2);
+    doc.setLineWidth(1);
     if (k <= mealsProgAdult) {
       doc.line(leftDistance - 1, topDistance + 1, leftDistance + 3, topDistance - 2);
     }
+    doc.setLineWidth(0);
     leftDistance = leftDistance + 7;
   }
   topDistance = topDistance - 7;
@@ -689,9 +692,11 @@ function createPDF() {
     dayCount = k.toString();
     doc.text(leftDistance, topDistance, dayCount);
     doc.line(leftDistance + 4.5, topDistance - 4, leftDistance + 4.5, topDistance + 2);
+    doc.setLineWidth(1);
     if (k <= mealsNonProgAdult) {
       doc.line(leftDistance - 1, topDistance + 1, leftDistance + 3, topDistance - 2);
     }
+    doc.setLineWidth(0);
     leftDistance = leftDistance + 7;
   }
   topDistance = topDistance - 7;
