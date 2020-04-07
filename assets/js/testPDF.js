@@ -1,4 +1,3 @@
-import * as url2 from '../img/stateLogo.png';
 var doc = new jsPDF('p', 'mm', 'letter');
 // letter paper w x h is 215.9mm x 279.4mm
 
@@ -8,69 +7,70 @@ var mealsSecond = 12;
 var mealsProgAdult = 10;
 var totalPossibleMeals = 320;
 
-doc.addImage(url2, 'PNG', 25, 5, 160, 30);
+//doc.addImage(url2, 'PNG', 25, 5, 160, 30);
 
 //picture box coords
-// doc.rect(25, 5, 160, 30);
+ doc.rect(25, 5, 160, 23);
 
 // form will be in here
 //       L,  T,  w ,   h
-doc.rect(25, 40, 160, 37);
+doc.rect(25, 32, 160, 37);
 
 doc.setFontSize(9);
 doc.setFont("times");
 doc.setFontType("bold");
 
-doc.text('Name of Site:', 26, 44);
+doc.text('Name of Site:', 26, 35);
 
 //vertical seperator
 //      ((xPoint),(yPoint));
-doc.line(140, 40, 140, 77);
+doc.line(140, 32, 140, 69);
 
-doc.text('Date:', 141, 44);
+doc.text('Date:', 141, 35);
 
 // horizontal line to hold site name and date
-doc.line(25, 52, 185, 52);
+doc.line(25, 42, 185, 42);
 
 // 2nd section - meal stuff
-doc.text('Meal: (circle one)', 26, 55.4);
+doc.text('Meal: (circle one)', 26, 45);
 
-doc.text('Breakfast', 36, 62);
-doc.text('A.M. Snack', 53, 62);
-doc.text('Lunch', 73, 62);
-doc.text('P.M. Snack', 85, 62);
-doc.text('Supper', 105, 62);
+doc.text('Breakfast', 36, 50);
+doc.text('A.M. Snack', 53, 50);
+doc.text('Lunch', 73, 50);
+doc.text('P.M. Snack', 85, 50);
+doc.text('Supper', 105, 50);
 
-doc.text('Site Supervisor:', 141, 55.4);
+doc.text('Site Supervisor:', 141, 45);
 
 // horizontal line to hold meal choices and site supervisor
-doc.line(25, 65, 185, 65);
+doc.line(25, 53, 185, 53);
 
-doc.text('Delivery Time:', 26, 69);
-
-// vertical seperator
-doc.line(55.4, 65, 55.4, 77);
-
-doc.text('Total Meals Delivered/Prepared:', 56, 69);
+doc.text('Delivery Time:', 26, 56);
 
 // vertical seperator
-doc.line(102, 65, 102, 77);
+doc.line(55.4, 53, 55.4, 69);
 
-doc.text('Delivery Temperature:', 103, 69);
+doc.text('Total Meals Delivered/Prepared:', 56, 56);
 
-doc.text('Meal Service Time:', 141, 69);
+// vertical seperator
+doc.line(102, 53, 102, 69);
+
+doc.text('Delivery Temperature:', 103, 56);
+
+doc.text('Meal Service Time:', 141, 56);
 
 doc.setFontSize(12);
 
-doc.text('First Meals Served to Children', 19, 82);
-doc.text('127', 180, 185)
+doc.text('First Meals Served to Children', 19, 75);
+
+doc.text('127', 180, 180)
 
 doc.setFontSize(9);
 
 //put lines through the served meals
 var leftDistance, dayCount, b = 1;
-var topDistance = 88;
-doc.rect(17, 84, 180, 95);
+var topDistance = 83;
+// doc.rect(17, 84, 180, 95);
 
 for (numRows = 0; numRows < (totalPossibleMeals / 20); numRows++) {
   leftDistance = 20;
@@ -102,7 +102,7 @@ for (numRows = 0; numRows < (totalPossibleMeals / 20); numRows++) {
   topDistance += 6;
 }
 
-doc.text('Total First Meals Served:', 141, 185);
+doc.text('Total First Meals Served:', 141, 180);
 
 // second meals section
 
@@ -163,14 +163,14 @@ for (let k = 1; k < 28; k++) {
 topDistance = topDistance - 7;
 doc.text('Total Meals Served to Non-Program Adults:', 123, (topDistance + 14));
 
-doc.text('Total Meals Served:', 12, 255);
-doc.text('Total Leftover Meals:', 55, 255);
-doc.text('Total Damaged Meals:', 100, 255);
-doc.text('Income From Adult Meals:', 147, 255);
+doc.text('Total Meals Served:', 12, 246);
+doc.text('Total Leftover Meals:', 55, 246);
+doc.text('Total Damaged Meals:', 100, 246);
+doc.text('Income From Adult Meals:', 147, 246);
 
-doc.rect(12, 258, 188.4, 19);
-doc.text(`Site Supervisor's Signature:`, 14, 262);
+doc.rect(12, 249, 188.4, 14);
+doc.text(`Site Supervisor's Signature:`, 14, 252);
 
 // vertical seperator
-doc.line(140, 258, 140, 277);
-doc.text('Date:', 142, 262);
+doc.line(140, 249, 140, 263);
+doc.text('Date:', 142, 252);

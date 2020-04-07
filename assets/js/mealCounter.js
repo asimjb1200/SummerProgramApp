@@ -524,77 +524,81 @@ function createPDF() {
 
   // form will be in here
   //       L,  T,  w ,   h
-  doc.rect(25, 40, 160, 37);
+  doc.rect(25, 32, 160, 37);
 
   doc.setFontSize(9);
   doc.setFont("times");
   doc.setFontType("bold");
 
-  doc.text('Name of Site:', 26, 44);
-  doc.text(siteName, 27, 50);
+  doc.text('Name of Site:', 26, 35);
+  doc.text(siteName, 27, 40);
 
   //vertical seperator
   //      ((xPoint),(yPoint));
-  doc.line(140, 40, 140, 77);
+  doc.line(140, 32, 140, 66);
 
-  doc.text('Date:', 141, 44);
-  doc.text(shortDate.toString(), 142, 50);
+  doc.text('Date:', 141, 35);
+  doc.text(shortDate.toString(), 142, 40);
 
   // horizontal line to hold site name and date
-  doc.line(25, 52, 185, 52);
+  doc.line(25, 42, 185, 42);
 
   // 2nd section - meal stuff
-  doc.text('Meal: (circle one)', 26, 55.4);
+  doc.text('Meal: (circle one)', 26, 45);
 
-  doc.text('Breakfast', 36, 62);
-  doc.text('A.M. Snack', 53, 62);
-  doc.text('Lunch', 73, 62);
-  doc.text('P.M. Snack', 85, 62);
-  doc.text('Supper', 105, 62);
+  doc.text('Breakfast', 36, 50);
+  doc.text('A.M. Snack', 53, 50);
+  doc.text('Lunch', 73, 50);
+  doc.text('P.M. Snack', 85, 50);
+  doc.text('Supper', 105, 50);
 
+  doc.setLineWidth(1);
   if (mealType === 'Breakfast') {
-    doc.line(34, 59, 51, 64);
+    doc.line(34, 47, 51, 51);
   } else if (mealType === 'Lunch') {
-    doc.line(72, 59, 80, 64);
+    doc.line(72, 47, 81.5, 51);
   } else if (mealType === 'Dinner') {
-    doc.line(104, 59, 115, 64);
+    doc.line(104, 48, 115, 51);
   } else if (mealType === 'Snack') {
-    doc.line(53, 59, 67, 63);
+    doc.line(53, 48, 68, 51);
   }
+  doc.setLineWidth(0);
 
-  doc.text('Site Supervisor:', 141, 55.4);
-  doc.text(siteSupervisor, 142, 63);
+  doc.text('Site Supervisor:', 141, 45);
+  doc.text(siteSupervisor, 142, 50);
 
   // horizontal line to hold meal choices and site supervisor
-  doc.line(25, 65, 185, 65);
+  doc.line(25, 53, 185, 53);
 
-  doc.text('Delivery Time:', 26, 69);
-  doc.text(deliveryTime.toString(), 27, 75);
-
-  // vertical seperator
-  doc.line(55.4, 65, 55.4, 77);
-
-  doc.text('Total Meals Delivered/Prepared:', 56, 69);
-  doc.text(mealsAvailable.toString(), 57, 75);
+  doc.text('Delivery Time:', 26, 56);
+  doc.text(deliveryTime.toString(), 27, 62);
 
   // vertical seperator
-  doc.line(102, 65, 102, 77);
+  doc.line(55.4, 53, 55.4, 66);
 
-  doc.text('Delivery Temperature:', 103, 69);
-  doc.text(deliveryTemp, 104, 75);
+  doc.text('Total Meals Delivered/Prepared:', 56, 56);
+  doc.text(mealsAvailable.toString(), 57, 62);
+
+  // vertical seperator
+  doc.line(102, 65, 102, 66);
+
+  doc.text('Delivery Temperature:', 103, 56);
+  doc.text(deliveryTemp, 104, 62);
 
   doc.text('Meal Service Time:', 141, 69);
 
   doc.setFontSize(12);
 
-  doc.text('First Meals Served to Children', 19, 82);
+  doc.text('First Meals Served to Children', 19, 73);
 
   doc.setFontSize(9);
 
   //put lines through the served meals
   let leftDistance, dayCount, b = 1;
-  let topDistance = 88;
-  doc.rect(17, 84, 180, 95);
+  let topDistance = 80;
+
+  // box to hold the days
+  doc.rect(17, 76, 180, 95);
 
   for (numRows = 0; numRows < (totalPossibleMeals / 20); numRows++) {
     leftDistance = 20;
@@ -608,6 +612,7 @@ function createPDF() {
 
       if (dayCount > 300) {
         // vertical line between each day
+
         doc.line(leftDistance + 6, topDistance, leftDistance + 6, topDistance + 1);
 
       } else if (dayCount < 20) {
@@ -618,7 +623,9 @@ function createPDF() {
       }
 
       if (i <= mealsFirst) {
+        doc.setLineWidth(1);
         doc.line(leftDistance - 1, topDistance + 1, leftDistance + 4, topDistance - 3);
+        doc.setLineWidth(0);
       }
       leftDistance = leftDistance + 9;
     }
@@ -691,18 +698,19 @@ function createPDF() {
   doc.text('Total Meals Served to Non-Program Adults: ' + mealsNonProgAdult.toString(), 123, (topDistance + 14));
   // doc.text(mealsNonProgAdult.toString(), 124, (topDistance + 14));
 
-  doc.text(`Total Meals Served: ` + mealsServed.toString(), 12, 255);
-  doc.text('Total Leftover Meals: ' + mealsLeftover.toString(), 55, 255);
-  doc.text('Total Damaged Meals: ' + mealsDamaged.toString(), 100, 255);
-  doc.text('Income From Adult Meals:', 147, 255);
+  doc.text(`Total Meals Served: ` + mealsServed.toString(), 12, 246);
+  doc.text('Total Leftover Meals: ' + mealsLeftover.toString(), 55, 246);
+  doc.text('Total Damaged Meals: ' + mealsDamaged.toString(), 100, 246);
+  doc.text('Income From Adult Meals:', 147, 246);
 
-  doc.rect(12, 258, 188.4, 14);
-  doc.text(`Site Supervisor's Signature:`, 14, 262);
+  // signature box
+  doc.rect(12, 249, 188.4, 14);
+  doc.text(`Site Supervisor's Signature:`, 14, 252);
 
   // vertical seperator
-  doc.line(140, 258, 140, 272);
-  doc.text('Date: ', 142, 262);
-  doc.text(shortDate, 143, 269);
+  doc.line(140, 249, 140, 263);
+  doc.text('Date:', 142, 252);
+  doc.text(shortDate, 143, 258);
 
   var canvas = document.body.querySelector('canvas');
 
@@ -717,7 +725,7 @@ function createPDF() {
   } else if (canvas !== null) {
     var sig = canvas.toDataURL("image/jpeg");
     // doc.addImage(st, 'JPEG', 12, (c + 8), 80, 25);
-    doc.addImage(sig, 'JPEG', 22, 262, 70, 10);
+    doc.addImage(sig, 'JPEG', 28, 255, 70, 10);
   }
   doc.save("MealCount_" + siteName + "_" + shortDate + ".pdf");
 }
